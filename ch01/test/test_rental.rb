@@ -9,4 +9,7 @@ class RentalTest < Test::Unit::TestCase
     assert_equal 'Gone With The Wind', rental.movie.title
     assert_equal 3, rental.days_rented
   end
+  def test_charge
+    # TODO: write this
+  end
 end
