@@ -1,5 +1,4 @@
-require 'test/unit'
-require '../movie'
+require 'test_helper'
 
 class MovieTest < Test::Unit::TestCase
   def test_new_movie

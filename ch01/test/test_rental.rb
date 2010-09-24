@@ -1,6 +1,4 @@
-require 'test/unit'
-require '../rental'
-require '../movie'
+require 'test_helper'
 
 class RentalTest < Test::Unit::TestCase
   def setup

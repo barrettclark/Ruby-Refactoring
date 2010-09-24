@@ -1,7 +1,4 @@
-require 'test/unit'
-require '../customer'
-require '../rental'
-require '../movie'
+require 'test_helper'
 
 class CustomerTest < Test::Unit::TestCase
   def setup
@@ -14,7 +11,7 @@ class CustomerTest < Test::Unit::TestCase
     movie = Movie.new('Gone With The Wind', Movie::REGULAR)
     rental = Rental.new(movie, 3)
     @customer.add_rental(rental)
-    # NOTE: rentals is not accessible, so we cannot test that
+    # NOTE: rentals is not accessible, so we cannot test that (directly)
     # assert_equal 1, @customer.rentals.size
     # assert_equal 'Gone With The Wind', @customer.rentals.first.movie.title
   end
