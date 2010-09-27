@@ -25,4 +25,12 @@ class RentalTest < Test::Unit::TestCase
     rental = Rental.new(kid_movie, 5)
     assert_equal 4.5, rental.charge
   end
+  
+  def test_frequent_renter_points
+    assert_equal 1, @rental.frequent_renter_points
+
+    new_release_movie = Movie.new('New Hotness', Movie::NEW_RELEASE)
+    rental = Rental.new(new_release_movie, 2)
+    assert_equal 2, rental.frequent_renter_points
+  end
 end
