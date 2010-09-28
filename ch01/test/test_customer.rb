@@ -8,23 +8,20 @@ class CustomerTest < Test::Unit::TestCase
     assert_equal 'Fred', @customer.name
   end
   def test_add_rental
-    movie = Movie.new('Gone With The Wind', Movie::REGULAR)
+    movie = Movie.new('Gone With The Wind', RegularPrice.new)
     rental = Rental.new(movie, 3)
     @customer.add_rental(rental)
-    # NOTE: rentals is not accessible, so we cannot test that (directly)
-    # assert_equal 1, @customer.rentals.size
-    # assert_equal 'Gone With The Wind', @customer.rentals.first.movie.title
   end
   def test_statement
-    movie = Movie.new('Gone With The Wind', Movie::REGULAR)
+    movie = Movie.new('Gone With The Wind', RegularPrice.new)
     rental = Rental.new(movie, 3)
     @customer.add_rental(rental)
 
-    movie = Movie.new('Some New Release', Movie::NEW_RELEASE)
+    movie = Movie.new('Some New Release', NewReleasePrice.new)
     rental = Rental.new(movie, 1)
     @customer.add_rental(rental)
 
-    movie = Movie.new('Cars', Movie::CHILDRENS)
+    movie = Movie.new('Cars', ChildrensPrice.new)
     rental = Rental.new(movie, 5)
     @customer.add_rental(rental)
     

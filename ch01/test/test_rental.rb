@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RentalTest < Test::Unit::TestCase
   def setup
-    @movie = Movie.new('Gone With The Wind', Movie::REGULAR)
+    @movie = Movie.new('Gone With The Wind', RegularPrice.new)
     @rental = Rental.new(@movie, 3)
   end
   def test_new_rental
@@ -15,11 +15,11 @@ class RentalTest < Test::Unit::TestCase
     rental = Rental.new(@movie, 1)
     assert_equal 2, rental.charge
     
-    new_release_movie = Movie.new('New Hotness', Movie::NEW_RELEASE)
+    new_release_movie = Movie.new('New Hotness', NewReleasePrice.new)
     rental = Rental.new(new_release_movie, 2)
     assert_equal 6, rental.charge
     
-    kid_movie = Movie.new('Bambi', Movie::CHILDRENS)
+    kid_movie = Movie.new('Bambi', ChildrensPrice.new)
     rental = Rental.new(kid_movie, 3)
     assert_equal 1.5, rental.charge
     rental = Rental.new(kid_movie, 5)
@@ -29,7 +29,7 @@ class RentalTest < Test::Unit::TestCase
   def test_frequent_renter_points
     assert_equal 1, @rental.frequent_renter_points
 
-    new_release_movie = Movie.new('New Hotness', Movie::NEW_RELEASE)
+    new_release_movie = Movie.new('New Hotness', NewReleasePrice.new)
     rental = Rental.new(new_release_movie, 2)
     assert_equal 2, rental.frequent_renter_points
   end
